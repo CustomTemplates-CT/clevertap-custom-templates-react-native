@@ -3,14 +3,9 @@ import {Linking} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import NativeDisplayTemplates from './NativeDisplayTemplates';
 import Home from './Home';
-import Profile from './Profile';
-import NativeDisplay from './NativeDisplay';
-import CustomAppInbox from './CustomAppInbox';
-import WebView from './WebView';
-import ProdExp from './ProdExp';
-import GeoFence from './GeoFence';
-import Login from './Login';
+import CoachMarksScreen from './CoachMarksScreen';
 
 const Stack = createStackNavigator();
 
@@ -28,13 +23,7 @@ const linking = {
   prefixes: ['karthikdl://'],
   config: {
     screens: {
-      NativeDisplay: 'nativedisplaypage',
-      GeoFence: 'geofencepage',
-      CustomAppInbox: 'customaipage',
-      WebView: 'webviewpage',
-      ProdExp: 'prodexppage',
-      Profile: 'mainpage',
-      Login: 'loginpage',
+      Home: 'loginpage',
     },
   },
 };
@@ -48,7 +37,7 @@ const App = () => {
         console.log('Navigation is ready');
       }}>
       <Stack.Navigator
-        initialRouteName="Login"
+        initialRouteName="Home"
         screenOptions={{
           headerTitleAlign: 'center',
           headerStyle: {
@@ -59,41 +48,20 @@ const App = () => {
             fontWeight: 'bold',
           },
         }}>
-        <Stack.Screen name="Home" component={Home} options={{title: 'Home'}} />
         <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={{title: 'Profile'}}
+          name="NativeDisplayTemplates"
+          component={NativeDisplayTemplates}
+          options={{title: 'NativeDisplayTemplates'}}
         />
         <Stack.Screen
-          name="NativeDisplay"
-          component={NativeDisplay}
-          options={{title: 'NativeDisplay'}}
+          name="Home"
+          component={Home}
+          options={{title: 'Custom Templates'}}
         />
         <Stack.Screen
-          name="CustomAppInbox"
-          component={CustomAppInbox}
-          options={{title: 'CustomAppInbox'}}
-        />
-        <Stack.Screen
-          name="WebView"
-          component={WebView}
-          options={{title: 'WebView'}}
-        />
-        <Stack.Screen
-          name="ProdExp"
-          component={ProdExp}
-          options={{title: 'ProdExp'}}
-        />
-        <Stack.Screen
-          name="GeoFence"
-          component={GeoFence}
-          options={{title: 'GeoFence'}}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{title: 'Login'}}
+          name="CoachMarksScreen"
+          component={CoachMarksScreen}
+          options={{title: 'CoachMarks Screen'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

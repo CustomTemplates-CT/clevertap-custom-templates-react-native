@@ -1,23 +1,26 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 
 const CleverTap = require('clevertap-react-native');
 
-const Home = ({navigation}) => {
+const NativeDisplayTemplates = ({navigation}) => {
   CleverTap.setDebugLevel(3);
 
   const handleSubmit = () => {
-    navigation.navigate('NativeDisplayTemplates');
+    navigation.navigate('CoachMarksScreen');
   };
 
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Navigate to Push</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Navigate to Native Display</Text>
+        <Text style={styles.buttonText}>Navigate to Coachmarks</Text>
       </TouchableOpacity>
     </View>
   );
@@ -51,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default NativeDisplayTemplates;
