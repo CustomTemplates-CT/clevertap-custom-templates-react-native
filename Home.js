@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     marginTop: 10, // Margin between inputs and button
   },
   buttonText: {
-    color: '#fff', // Text color
+    color: '#fff',
     fontSize: 18,
   },
 });
