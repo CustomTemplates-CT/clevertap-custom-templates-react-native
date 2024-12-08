@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,24 +10,85 @@ import {
   FlatList,
 } from 'react-native';
 
+import CoachMarkHelper from './CoachMarkRNHelper';
+
+const CleverTap = require('clevertap-react-native');
+
 const CoachMarksScreen = () => {
+  CleverTap.setDebugLevel(3);
+
+  useEffect(() => {
+    CleverTap.setDebugLevel(3);
+
+    CleverTap.recordEvent('Karthiks Native Display Event');
+
+    setTimeout(() => {
+      CleverTap.getAllDisplayUnits((err, res) => {
+        if (err) {
+          console.log('Error fetching display units: ', err);
+        } else {
+          console.log('All Display Units: ', res[0]);
+          CoachMarkHelper.showCoachMarks(JSON.stringify(res[0]), error => {
+            if (error) {
+              console.error('Error:', error);
+            } else {
+              console.log('Coach marks completed');
+            }
+          });
+        }
+      });
+    }, 2000);
+  }, []);
+
   const categories = [
-    { id: '1', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png', title: 'Burgers' },
-    { id: '2', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046781.png', title: 'Drinks' },
-    { id: '3', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046786.png', title: 'Fries' },
-    { id: '4', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046785.png', title: 'Coffee' },
+    {
+      id: '1',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png',
+      title: 'Burgers',
+    },
+    {
+      id: '2',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046781.png',
+      title: 'Drinks',
+    },
+    {
+      id: '3',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046786.png',
+      title: 'Fries',
+    },
+    {
+      id: '4',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046785.png',
+      title: 'Coffee',
+    },
   ];
 
   const recommended = [
-    { id: '1', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046771.png', title: 'Pizza' },
-    { id: '2', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png', title: 'Burger' },
-    { id: '3', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046786.png', title: 'Fries' },
-    { id: '4', image: 'https://cdn-icons-png.flaticon.com/512/1046/1046789.png', title: 'Soda' },
+    {
+      id: '1',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046771.png',
+      title: 'Pizza',
+    },
+    {
+      id: '2',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png',
+      title: 'Burger',
+    },
+    {
+      id: '3',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046786.png',
+      title: 'Fries',
+    },
+    {
+      id: '4',
+      image: 'https://cdn-icons-png.flaticon.com/512/1046/1046789.png',
+      title: 'Soda',
+    },
   ];
 
-  const renderCard = (item) => (
+  const renderCard = item => (
     <View style={styles.cardView}>
-      <Image source={{ uri: item.image }} style={styles.cardImage} />
+      <Image source={{uri: item.image}} style={styles.cardImage} />
       <Text style={styles.cardTitle}>{item.title}</Text>
     </View>
   );
@@ -42,7 +103,12 @@ const CoachMarksScreen = () => {
         </View>
         <View style={styles.profileIconContainer}>
           <Image
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png' }}
+            accessibilityLabel="profile_image"
+            testID="profile_image"
+            accessible={true}
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
+            }}
             style={styles.profileIcon}
           />
         </View>
@@ -58,6 +124,9 @@ const CoachMarksScreen = () => {
 
       {/* Search Bar */}
       <TextInput
+        accessibilityLabel="search"
+        testID="search"
+        accessible={true}
         style={styles.searchInput}
         placeholder="Search your favorite food"
         placeholderTextColor="#999"
@@ -73,8 +142,8 @@ const CoachMarksScreen = () => {
         </View>
         <FlatList
           data={categories}
-          renderItem={({ item }) => renderCard(item)}
-          keyExtractor={(item) => item.id}
+          renderItem={({item}) => renderCard(item)}
+          keyExtractor={item => item.id}
           horizontal={false}
           numColumns={2}
           columnWrapperStyle={styles.rowStyle}
@@ -90,8 +159,8 @@ const CoachMarksScreen = () => {
         </View>
         <FlatList
           data={recommended}
-          renderItem={({ item }) => renderCard(item)}
-          keyExtractor={(item) => item.id}
+          renderItem={({item}) => renderCard(item)}
+          keyExtractor={item => item.id}
           horizontal={false}
           numColumns={2}
           columnWrapperStyle={styles.rowStyle}
@@ -103,28 +172,45 @@ const CoachMarksScreen = () => {
       <View style={styles.bottomNav}>
         <TouchableOpacity style={styles.navItem}>
           <Image
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/1946/1946436.png' }}
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/512/1946/1946436.png',
+            }}
             style={styles.navIcon}
           />
           <Text style={styles.navText}>Home</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Image
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/833/833314.png' }}
+            accessibilityLabel="cart"
+            testID="cart"
+            accessible={true}
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/512/833/833314.png',
+            }}
             style={styles.navIcon}
           />
           <Text style={styles.navText}>Cart</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Image
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/1828/1828919.png' }}
+            accessibilityLabel="support_help"
+            testID="support_help"
+            accessible={true}
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/512/1828/1828919.png',
+            }}
             style={styles.navIcon}
           />
           <Text style={styles.navText}>Help</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Image
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3524/3524659.png' }}
+            accessibilityLabel="settings"
+            testID="settings"
+            accessible={true}
+            source={{
+              uri: 'https://cdn-icons-png.flaticon.com/512/3524/3524659.png',
+            }}
             style={styles.navIcon}
           />
           <Text style={styles.navText}>Settings</Text>

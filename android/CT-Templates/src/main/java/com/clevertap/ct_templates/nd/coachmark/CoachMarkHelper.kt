@@ -1,11 +1,15 @@
 package com.clevertap.ct_templates.nd.coachmark
 
+import android.R
+import android.app.Activity
 import android.graphics.Color
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONException
 import org.json.JSONObject
+
 
 class CoachMarkHelper {
 
@@ -43,11 +47,14 @@ class CoachMarkHelper {
                             throw JSONException("'$viewIdKey' is missing or empty")
                         }
 
-                        val viewId = context.resources.getIdentifier(
-                            viewIdString,
-                            "id",
-                            context.packageName
-                        )
+//                        val viewId = context.resources.getIdentifier(
+//                            viewIdString,
+//                            "id",
+//                            context.packageName
+//                        )
+
+                        val viewId = resolveViewId(context, viewIdString)
+                        Log.d("CoachMarkHelper", "Resolved view ID for key " + viewIdKey + ": " + viewId);
                         if (viewId == 0) {
                             throw JSONException("Invalid view ID for '$viewIdKey': $viewIdString")
                         }
@@ -74,6 +81,45 @@ class CoachMarkHelper {
             Log.e("CoachMarkHelper", "Unexpected error: ${e.message}")
         }
     }
+
+//    fun getViewIdByTestId(testId: String, activity: Activity): Int {
+//        val rootView = activity.findViewById<View>(R.id.content).rootView as ReactRootView
+//        if (rootView != null) {
+//            val targetView = ReactFindViewUtil.findView(rootView, testId)
+//            if (targetView != null) {
+//                return targetView.id
+//            }
+//        }
+//        Log.e("CoachMarkHelper", "Could not find view with testID: $testId")
+//        return 0
+//    }
+
+    fun findViewWithTestId(root: View?, testId: String): View? {
+        if (root == null) {
+            return null
+        }
+        // Check the view's content description (used for accessibilityLabel/testID)
+        if (testId == root.contentDescription) {
+            return root
+        }
+        if (root is ViewGroup) {
+            val group = root
+            for (i in 0 until group.childCount) {
+                val childResult = findViewWithTestId(group.getChildAt(i), testId)
+                if (childResult != null) {
+                    return childResult
+                }
+            }
+        }
+        return null
+    }
+
+    fun resolveViewId(activity: Activity, testId: String?): Int {
+        val rootView = activity.findViewById<View>(R.id.content).rootView
+        val targetView = findViewWithTestId(rootView, testId!!)
+        return targetView?.id ?: 0
+    }
+
 
     fun addCoachMarkItem(
         viewId: Int,
