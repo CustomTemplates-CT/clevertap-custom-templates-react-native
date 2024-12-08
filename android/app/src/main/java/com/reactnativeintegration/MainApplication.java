@@ -31,6 +31,8 @@ import org.json.JSONObject;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import com.clevertap.react.CleverTapApplication;
+import com.facebook.react.bridge.ReactApplicationContext;
+
 
 public class MainApplication extends CleverTapApplication implements ActivityLifecycleCallbacks, ReactApplication {
 
