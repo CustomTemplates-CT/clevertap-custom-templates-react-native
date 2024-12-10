@@ -13,14 +13,22 @@ const CleverTap = require('clevertap-react-native');
 const NativeDisplayTemplates = ({navigation}) => {
   CleverTap.setDebugLevel(3);
 
-  const handleSubmit = () => {
+  const navigateToCoachmarks = () => {
     navigation.navigate('CoachMarksScreen');
+  };
+
+  const navigateToTooltips = () => {
+    navigation.navigate('TooltipsScreen');
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+      <TouchableOpacity style={styles.button} onPress={navigateToCoachmarks}>
         <Text style={styles.buttonText}>Navigate to Coachmarks</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={navigateToTooltips}>
+        <Text style={styles.buttonText}>Navigate to Tooltips</Text>
       </TouchableOpacity>
     </View>
   );

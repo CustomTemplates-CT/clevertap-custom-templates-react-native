@@ -10,7 +10,7 @@ import {
   FlatList,
 } from 'react-native';
 
-import CoachMarkHelper from './CoachMarkRNHelper';
+import CoachMarkHelper from './CustomTemplatesHelper';
 
 const CleverTap = require('clevertap-react-native');
 
@@ -28,11 +28,14 @@ const CoachMarksScreen = () => {
           console.log('Error fetching display units: ', err);
         } else {
           console.log('All Display Units: ', res[0]);
+          console.log('wzrk_id: ', res[0].wzrk_id);
+          CleverTap.pushDisplayUnitViewedEventForID(res[0].wzrk_id);
           CoachMarkHelper.showCoachMarks(JSON.stringify(res[0]), error => {
             if (error) {
               console.error('Error:', error);
             } else {
               console.log('Coach marks completed');
+              CleverTap.pushDisplayUnitClickedEventForID(res[0].wzrk_id);
             }
           });
         }

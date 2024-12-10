@@ -6,6 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import NativeDisplayTemplates from './NativeDisplayTemplates';
 import Home from './Home';
 import CoachMarksScreen from './CoachMarksScreen';
+import TooltipsScreen from './TooltipsScreen';
 
 const Stack = createStackNavigator();
 
@@ -62,6 +63,11 @@ const App = () => {
           name="CoachMarksScreen"
           component={CoachMarksScreen}
           options={{title: 'CoachMarks Screen'}}
+        />
+        <Stack.Screen
+          name="TooltipsScreen"
+          component={TooltipsScreen}
+          options={{title: 'Tooltips Screen'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
