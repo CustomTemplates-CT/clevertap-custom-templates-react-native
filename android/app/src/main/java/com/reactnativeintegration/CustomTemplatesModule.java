@@ -7,6 +7,7 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.clevertap.ct_templates.nd.coachmark.CoachMarkHelper;
+import com.clevertap.ct_templates.nd.spotlights.SpotlightHelper;
 import com.clevertap.ct_templates.nd.tooltips.TooltipHelper;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -52,8 +53,8 @@ public class CustomTemplatesModule extends ReactContextBaseJavaModule {
                         }
                     });
                 } catch (Exception e) {
-                    Log.e("CustomTemplatesModule", "Error rendering coach marks: " + e.getMessage());
-                    onComplete.invoke("Error rendering coach marks: " + e.getMessage()); // Pass error back
+                    Log.e("CustomTemplatesModule", "Error rendering coachmarks: " + e.getMessage());
+                    onComplete.invoke("Error rendering coachmarks: " + e.getMessage()); // Pass error back
                 }
             }
         });
@@ -85,8 +86,41 @@ public class CustomTemplatesModule extends ReactContextBaseJavaModule {
                         }
                     });
                 } catch (Exception e) {
-                    Log.e("CustomTemplatesModule", "Error rendering coach marks: " + e.getMessage());
-                    onComplete.invoke("Error rendering coach marks: " + e.getMessage()); // Pass error back
+                    Log.e("CustomTemplatesModule", "Error rendering tooltips: " + e.getMessage());
+                    onComplete.invoke("Error rendering tooltips: " + e.getMessage()); // Pass error back
+                }
+            }
+        });
+    }
+
+    @ReactMethod
+    public void showSpotlights(String jsonString, Callback onComplete) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                // Perform your UI updates here
+                AppCompatActivity activity = (AppCompatActivity) getCurrentActivity();
+                if (activity == null) {
+                    Log.e("CustomTemplatesModule", "Current activity is null");
+                    onComplete.invoke("Activity is null"); // Pass error back to JavaScript
+                    return;
+                }
+
+                try {
+                    JSONObject jsonObject = new JSONObject(jsonString);
+                    SpotlightHelper spotlightHelper = new SpotlightHelper();
+                    spotlightHelper.showSpotlight(activity, jsonObject, new kotlin.jvm.functions.Function0<kotlin.Unit>() {
+                        @Override
+                        public kotlin.Unit invoke() {
+                            if (onComplete != null) {
+                                onComplete.invoke(); // Notify JavaScript callback
+                            }
+                            return kotlin.Unit.INSTANCE;
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("CustomTemplatesModule", "Error rendering spotlights: " + e.getMessage());
+                    onComplete.invoke("Error rendering spotlights: " + e.getMessage()); // Pass error back
                 }
             }
         });
