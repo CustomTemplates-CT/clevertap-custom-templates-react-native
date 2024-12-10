@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -91,6 +92,26 @@ class SpotlightHelper {
         }
     }
 
+    fun findViewWithTestId(root: View?, testId: String): View? {
+        if (root == null) {
+            return null
+        }
+        // Check the view's content description (used for accessibilityLabel/testID)
+        if (testId == root.contentDescription) {
+            return root
+        }
+        if (root is ViewGroup) {
+            for (i in 0 until root.childCount) {
+                val childResult = findViewWithTestId(root.getChildAt(i), testId)
+                if (childResult != null) {
+                    return childResult
+                }
+            }
+        }
+        return null
+    }
+
+
     private fun createTarget(
         activity: AppCompatActivity,
         anchorId: String,
@@ -99,6 +120,12 @@ class SpotlightHelper {
         textColor: String
     ): Target {
         return try {
+            val anchorView = findViewWithTestId(
+                activity.findViewById(android.R.id.content),
+                anchorId
+            ) ?: throw IllegalArgumentException("Anchor view with testId $anchorId not found")
+
+
             val rootView = FrameLayout(activity)
             val overlay = activity.layoutInflater.inflate(R.layout.layout_target, rootView)
 
@@ -123,9 +150,6 @@ class SpotlightHelper {
 
             overlay.viewTreeObserver.addOnGlobalLayoutListener {
                 try {
-                    val anchorView = activity.findViewById<View>(
-                        activity.resources.getIdentifier(anchorId, "id", activity.packageName)
-                    )
                     val anchorLocation = IntArray(2)
                     anchorView.getLocationOnScreen(anchorLocation)
                     val anchorCenterX = anchorLocation[0] + anchorView.width / 2
@@ -178,9 +202,6 @@ class SpotlightHelper {
                 }
             }
 
-            val anchorView = activity.findViewById<View>(
-                activity.resources.getIdentifier(anchorId, "id", activity.packageName)
-            )
             Target.Builder()
                 .setAnchor(anchorView)
                 .setShape(Circle(200f))

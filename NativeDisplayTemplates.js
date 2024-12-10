@@ -21,14 +21,20 @@ const NativeDisplayTemplates = ({navigation}) => {
     navigation.navigate('TooltipsScreen');
   };
 
+  const navigateToSpotlights = () => {
+    navigation.navigate('SpotlightsScreen');
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={navigateToCoachmarks}>
         <Text style={styles.buttonText}>Navigate to Coachmarks</Text>
       </TouchableOpacity>
-
       <TouchableOpacity style={styles.button} onPress={navigateToTooltips}>
         <Text style={styles.buttonText}>Navigate to Tooltips</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={navigateToSpotlights}>
+        <Text style={styles.buttonText}>Navigate to Spotlights</Text>
       </TouchableOpacity>
     </View>
   );

@@ -9,8 +9,6 @@ const TooltipsScreen = () => {
   CleverTap.setDebugLevel(3);
 
   useEffect(() => {
-    CleverTap.setDebugLevel(3);
-
     CleverTap.recordEvent('ToolsTips Event');
 
     setTimeout(() => {

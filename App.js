@@ -2,11 +2,11 @@ import React from 'react';
 import {Linking} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
 import NativeDisplayTemplates from './NativeDisplayTemplates';
 import Home from './Home';
 import CoachMarksScreen from './CoachMarksScreen';
 import TooltipsScreen from './TooltipsScreen';
+import SpotlightsScreen from './SpotlightsScreen';
 
 const Stack = createStackNavigator();
 
@@ -52,7 +52,7 @@ const App = () => {
         <Stack.Screen
           name="NativeDisplayTemplates"
           component={NativeDisplayTemplates}
-          options={{title: 'NativeDisplayTemplates'}}
+          options={{title: 'Native Display Templates'}}
         />
         <Stack.Screen
           name="Home"
@@ -68,6 +68,11 @@ const App = () => {
           name="TooltipsScreen"
           component={TooltipsScreen}
           options={{title: 'Tooltips Screen'}}
+        />
+        <Stack.Screen
+          name="SpotlightsScreen"
+          component={SpotlightsScreen}
+          options={{title: 'Spotlights Screen'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
