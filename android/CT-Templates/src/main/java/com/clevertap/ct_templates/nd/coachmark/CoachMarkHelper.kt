@@ -82,18 +82,6 @@ class CoachMarkHelper {
         }
     }
 
-//    fun getViewIdByTestId(testId: String, activity: Activity): Int {
-//        val rootView = activity.findViewById<View>(R.id.content).rootView as ReactRootView
-//        if (rootView != null) {
-//            val targetView = ReactFindViewUtil.findView(rootView, testId)
-//            if (targetView != null) {
-//                return targetView.id
-//            }
-//        }
-//        Log.e("CoachMarkHelper", "Could not find view with testID: $testId")
-//        return 0
-//    }
-
     fun findViewWithTestId(root: View?, testId: String): View? {
         if (root == null) {
             return null
@@ -119,7 +107,6 @@ class CoachMarkHelper {
         val targetView = findViewWithTestId(rootView, testId!!)
         return targetView?.id ?: 0
     }
-
 
     fun addCoachMarkItem(
         viewId: Int,

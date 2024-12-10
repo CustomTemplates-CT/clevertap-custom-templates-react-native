@@ -15,15 +15,15 @@ import com.facebook.react.bridge.ReactMethod;
 
 import org.json.JSONObject;
 
-public class CoachMarkModule extends ReactContextBaseJavaModule {
+public class CustomTemplatesModule extends ReactContextBaseJavaModule {
 
-    public CoachMarkModule(ReactApplicationContext reactContext) {
+    public CustomTemplatesModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
     @Override
     public String getName() {
-        return "CoachMarkModule";
+        return "CustomTemplatesModule";
     }
 
     @ReactMethod
@@ -34,7 +34,7 @@ public class CoachMarkModule extends ReactContextBaseJavaModule {
                 // Perform your UI updates here
                 AppCompatActivity activity = (AppCompatActivity) getCurrentActivity();
                 if (activity == null) {
-                    Log.e("CoachMarkModule", "Current activity is null");
+                    Log.e("CustomTemplatesModule", "Current activity is null");
                     onComplete.invoke("Activity is null"); // Pass error back to JavaScript
                     return;
                 }
@@ -52,7 +52,7 @@ public class CoachMarkModule extends ReactContextBaseJavaModule {
                         }
                     });
                 } catch (Exception e) {
-                    Log.e("CoachMarkModule", "Error rendering coach marks: " + e.getMessage());
+                    Log.e("CustomTemplatesModule", "Error rendering coach marks: " + e.getMessage());
                     onComplete.invoke("Error rendering coach marks: " + e.getMessage()); // Pass error back
                 }
             }
@@ -67,7 +67,7 @@ public class CoachMarkModule extends ReactContextBaseJavaModule {
                 // Perform your UI updates here
                 AppCompatActivity activity = (AppCompatActivity) getCurrentActivity();
                 if (activity == null) {
-                    Log.e("CoachMarkModule", "Current activity is null");
+                    Log.e("CustomTemplatesModule", "Current activity is null");
                     onComplete.invoke("Activity is null"); // Pass error back to JavaScript
                     return;
                 }
@@ -85,7 +85,7 @@ public class CoachMarkModule extends ReactContextBaseJavaModule {
                         }
                     });
                 } catch (Exception e) {
-                    Log.e("CoachMarkModule", "Error rendering coach marks: " + e.getMessage());
+                    Log.e("CustomTemplatesModule", "Error rendering coach marks: " + e.getMessage());
                     onComplete.invoke("Error rendering coach marks: " + e.getMessage()); // Pass error back
                 }
             }

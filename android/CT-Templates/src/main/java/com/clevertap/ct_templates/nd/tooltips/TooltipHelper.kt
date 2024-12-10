@@ -1,7 +1,10 @@
 package com.clevertap.ct_templates.nd.tooltips
 
+import android.app.Activity
 import android.graphics.Color
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.clevertap.ct_templates.R
 import org.json.JSONException
@@ -42,7 +45,9 @@ class TooltipHelper {
                             throw JSONException("'nd_view${index + 1}_id' is missing or empty")
                         }
 
-                        val viewId = anyActivity.resources.getIdentifier(viewIdName, "id", anyActivity.packageName)
+//                        val viewId = anyActivity.resources.getIdentifier(viewIdName, "id", anyActivity.packageName)
+                        val viewId = resolveViewId(anyActivity, viewIdName)
+                        Log.d("TooltipHelper", "Resolved view ID for key " + viewIdName + ": " + viewId);
                         if (viewId == 0) {
                             throw JSONException("Invalid view ID for 'nd_view${index + 1}_id': $viewIdName")
                         }
@@ -81,6 +86,32 @@ class TooltipHelper {
         } catch (e: Exception) {
             Log.e("TooltipHelper", "Unexpected error: ${e.message}")
         }
+    }
+
+    fun findViewWithTestId(root: View?, testId: String): View? {
+        if (root == null) {
+            return null
+        }
+        // Check the view's content description (used for accessibilityLabel/testID)
+        if (testId == root.contentDescription) {
+            return root
+        }
+        if (root is ViewGroup) {
+            val group = root
+            for (i in 0 until group.childCount) {
+                val childResult = findViewWithTestId(group.getChildAt(i), testId)
+                if (childResult != null) {
+                    return childResult
+                }
+            }
+        }
+        return null
+    }
+
+    fun resolveViewId(activity: Activity, testId: String?): Int {
+        val rootView = activity.findViewById<View>(android.R.id.content).rootView
+        val targetView = findViewWithTestId(rootView, testId!!)
+        return targetView?.id ?: 0
     }
 
     private fun getGravity(index: Int, customKv: JSONObject): Tooltip.Gravity {
