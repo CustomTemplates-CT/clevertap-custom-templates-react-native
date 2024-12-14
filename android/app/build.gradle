@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 apply plugin: 'com.google.gms.google-services'
 import com.android.build.OutputFile
 
@@ -126,6 +127,7 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 def nativeArchitectures = project.getProperties().get("reactNativeDebugArchitectures")
 
 android {
+    namespace "com.reactnativeintegration"
     ndkVersion rootProject.ext.ndkVersion
 
     // compileSdkVersion rootProject.ext.compileSdkVersion
@@ -139,6 +141,13 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"  // Align Kotlin JVM target with Java 1.8
     }
     splits {
         abi {
@@ -246,6 +255,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.10"
 
     implementation project(':CT-Templates')
 }
