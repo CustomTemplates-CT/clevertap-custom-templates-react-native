@@ -1,123 +1,45 @@
 {
   "project_info": {
-    "project_number": "487275975172",
-    "project_id": "integrationsdk-test",
-    "storage_bucket": "integrationsdk-test.appspot.com"
+    "project_number": "844775439061",
+    "project_id": "ctcustomtemplates-1e2c0",
+    "storage_bucket": "ctcustomtemplates-1e2c0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487275975172:android:9963b630c7945b19af9b51",
+        "mobilesdk_app_id": "1:844775439061:android:c4786901107770d8a4805c",
         "android_client_info": {
-          "package_name": "com.example.integration_sdk_test"
+          "package_name": "com.clevertap.ctcustomtemplates"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBaZ_wyTxUsLkIdt5wsolubN4kvqaxBJRI"
+          "current_key": "AIzaSyBnGSE64rfAfZVhEHeBLh-vGdtLHHeGE8Q"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487275975172:android:05936bb9d1b0ba32af9b51",
-        "android_client_info": {
-          "package_name": "com.karthik.cordovatest"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBaZ_wyTxUsLkIdt5wsolubN4kvqaxBJRI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:487275975172:android:3654f61f2651e781af9b51",
-        "android_client_info": {
-          "package_name": "com.project.integrationsdk"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBaZ_wyTxUsLkIdt5wsolubN4kvqaxBJRI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:487275975172:android:8a4a2affe1c77c50af9b51",
+        "mobilesdk_app_id": "1:844775439061:android:77ca7372930678b0a4805c",
         "android_client_info": {
           "package_name": "com.reactnativeintegration"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBaZ_wyTxUsLkIdt5wsolubN4kvqaxBJRI"
+          "current_key": "AIzaSyBnGSE64rfAfZVhEHeBLh-vGdtLHHeGE8Q"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "487275975172-ukhq5cmaq2r3mcecjpf0n0nqf17nnqip.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

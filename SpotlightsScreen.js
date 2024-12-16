@@ -9,7 +9,7 @@ const SpotlightsScreen = () => {
   CleverTap.setDebugLevel(3);
 
   useEffect(() => {
-    CleverTap.recordEvent('Spotlight Event');
+    CleverTap.recordEvent('spotlights_nd');
 
     setTimeout(() => {
       CleverTap.getAllDisplayUnits((err, res) => {
@@ -36,21 +36,18 @@ const SpotlightsScreen = () => {
     <View style={styles.container}>
       <Text
         accessibilityLabel="TextView1"
-        testID="TextView1"
         accessible={true}
         style={styles.textView1}>
         TextView1
       </Text>
       <Text
         accessibilityLabel="TextView2"
-        testID="TextView2"
         accessible={true}
         style={styles.textView2}>
         TextView2
       </Text>
       <Text
         accessibilityLabel="TextView3"
-        testID="TextView3"
         accessible={true}
         style={styles.textView3}>
         TextView3

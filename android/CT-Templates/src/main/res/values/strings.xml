@@ -4,7 +4,7 @@
 
 <!--    coachmarks-->
 
-    <string name="coachmarkLabel_value_limit">%s/%s</string>
+    <string name="coachmarkLabel_value_limit" formatted="false">%s/%s</string>
     <string name="coachmarkNext">Next</string>
     <string name="coachmarkSkip">Skip</string>
 

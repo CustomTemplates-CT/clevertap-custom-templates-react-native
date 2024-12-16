@@ -6,6 +6,14 @@ const CleverTap = require('clevertap-react-native');
 const Home = ({navigation}) => {
   CleverTap.setDebugLevel(3);
 
+  CleverTap.createNotificationChannel(
+    'CTCustom',
+    'CTCustom Push Testing',
+    'CTCustom React Native Testing',
+    5,
+    true,
+  );
+
   const handleSubmit = () => {
     navigation.navigate('NativeDisplayTemplates');
   };
