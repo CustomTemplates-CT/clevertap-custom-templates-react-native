@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 apply plugin: 'com.google.gms.google-services'
 import com.android.build.OutputFile
 
@@ -78,7 +79,11 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-        enableHermes: false,  // clean and rebuild if changing
+        // enableHermes: false,  // clean and rebuild if changing
+
+    entryFile: "index.js",
+    bundleInRelease: true, // Ensures the JS bundle is created for release
+    enableHermes: false    // Or true, based on your Hermes configuration
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -126,6 +131,7 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 def nativeArchitectures = project.getProperties().get("reactNativeDebugArchitectures")
 
 android {
+    namespace "com.reactnativeintegration"
     ndkVersion rootProject.ext.ndkVersion
 
     // compileSdkVersion rootProject.ext.compileSdkVersion
@@ -139,6 +145,13 @@ android {
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"  // Align Kotlin JVM target with Java 1.8
     }
     splits {
         abi {
@@ -155,6 +168,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
@@ -168,10 +189,14 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
+            signingConfig signingConfigs.release
+            minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+    }
+
+    packagingOptions {
+        exclude "META-INF/navigation.json"
     }
 
     // applicationVariants are e.g. debug, release
@@ -246,6 +271,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.10"
 
     implementation project(':CT-Templates')
 }

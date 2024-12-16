@@ -27,66 +27,15 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="karthikdl" android:host="nativedisplaypage" />
-                <data android:scheme="karthikdl" android:host="geofencepage" />
-                <data android:scheme="karthikdl" android:host="customaipage" />
-                <data android:scheme="karthikdl" android:host="webviewpage" />
-                <data android:scheme="karthikdl" android:host="prodexppage" />
-                <data android:scheme="karthikdl" android:host="mainpage" />
-                <data android:scheme="karthikdl" android:host="profilepage" />
-                <data android:scheme="karthikdl" android:host="loginpage" />
             </intent-filter>
         </activity>
 
         <meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="TEST-W8W-6WR-846Z" />
+            android:value="449-R88-8R7Z" />
         <meta-data
             android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-206-0b0" />
-
-        <!-- <meta-data
-            android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="TEST-W8W-6WR-846Z" />
-        <meta-data
-            android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-206-0b0" /> -->
-
-        <!-- TEST-KarthikTest2   -->
-<!--        <meta-data-->
-<!--            android:name="CLEVERTAP_ACCOUNT_ID"-->
-<!--            android:value="TEST-6Z4-46Z-776Z" />-->
-<!--        <meta-data-->
-<!--            android:name="CLEVERTAP_TOKEN"-->
-<!--            android:value="TEST-164-416" />-->
-
-        <!-- NG ECRM   -->
-        <!-- <meta-data
-          android:name="CLEVERTAP_ACCOUNT_ID"
-          android:value="656-68W-R56Z"/>
-        <meta-data
-          android:name="CLEVERTAP_TOKEN"
-          android:value="0b6-656"/> -->
-
-        <!-- <meta-data
-          android:name="CLEVERTAP_ACCOUNT_ID"
-          android:value="TEST-R9Z-4W9-646Z"/>
-        <meta-data
-          android:name="CLEVERTAP_TOKEN"
-          android:value="TEST-c04-1c2"/> -->
-        <!-- <meta-data
-          android:name="CLEVERTAP_USE_GOOGLE_AD_ID"
-          android:value="1"/> -->
-
-
-        <!-- <service
-              android:name="com.clevertap.android.sdk.pushnotification.fcm.FcmMessageListenerService"
-              android:exported="true">
-              <intent-filter>
-                  <action android:name="com.google.firebase.MESSAGING_EVENT" />
-              </intent-filter>
-          </service> -->
+            android:value="bb2-c44" />
 
         <service
             android:name=".MyFirebaseMessagingService"

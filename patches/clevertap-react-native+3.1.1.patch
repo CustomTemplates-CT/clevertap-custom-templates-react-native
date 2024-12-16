@@ -1,0 +1,253 @@
+diff --git a/node_modules/clevertap-react-native/android/build.gradle b/node_modules/clevertap-react-native/android/build.gradle
+index 0c18d7f..86760ce 100644
+--- a/node_modules/clevertap-react-native/android/build.gradle
++++ b/node_modules/clevertap-react-native/android/build.gradle
+@@ -40,6 +40,10 @@ android {
+         buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString())
+     }
+ 
++    kotlinOptions {
++        jvmTarget = "1.8" // Use a valid target like 1.8 or 11
++    }
++
+     sourceSets {
+         main {
+             if (isNewArchitectureEnabled()) {
+@@ -50,6 +54,10 @@ android {
+         }
+     }
+ 
++    buildFeatures {
++        buildConfig true
++    }
++
+     namespace 'com.clevertap.react'
+ }
+ 
+diff --git a/node_modules/clevertap-react-native/android/build/generated/source/buildConfig/debug/com/clevertap/react/BuildConfig.java b/node_modules/clevertap-react-native/android/build/generated/source/buildConfig/debug/com/clevertap/react/BuildConfig.java
+new file mode 100644
+index 0000000..f864e35
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/generated/source/buildConfig/debug/com/clevertap/react/BuildConfig.java
+@@ -0,0 +1,12 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package com.clevertap.react;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = Boolean.parseBoolean("true");
++  public static final String LIBRARY_PACKAGE_NAME = "com.clevertap.react";
++  public static final String BUILD_TYPE = "debug";
++  // Field from default config.
++  public static final boolean IS_NEW_ARCHITECTURE_ENABLED = false;
++}
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml b/node_modules/clevertap-react-native/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..0900b20
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.clevertap.react" >
++
++    <uses-sdk android:minSdkVersion="19" />
++    <!--
++    Package name has been added to support compatibility for RN versions less than 0.71.
++    This gives warning for RN versions greater than or equal to 0.71 which can be ignored
++    -->
++    <application>
++    </application>
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json b/node_modules/clevertap-react-native/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+new file mode 100644
+index 0000000..acaa5a9
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+@@ -0,0 +1,18 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.clevertap.react",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties b/node_modules/clevertap-react-native/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+new file mode 100644
+index 0000000..1211b1e
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+@@ -0,0 +1,6 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
++minCompileSdk=1
++minCompileSdkExtension=0
++minAndroidGradlePluginVersion=1.0.0
++coreLibraryDesugaringEnabled=false
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json b/node_modules/clevertap-react-native/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar b/node_modules/clevertap-react-native/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar
+new file mode 100644
+index 0000000..a9340dd
+Binary files /dev/null and b/node_modules/clevertap-react-native/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar differ
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt b/node_modules/clevertap-react-native/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties b/node_modules/clevertap-react-native/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+new file mode 100644
+index 0000000..7e4da09
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+@@ -0,0 +1 @@
++#Sat Dec 14 15:13:37 IST 2024
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml b/node_modules/clevertap-react-native/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+new file mode 100644
+index 0000000..770bda5
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/build/generated/res/resValues/debug"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml b/node_modules/clevertap-react-native/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+new file mode 100644
+index 0000000..d159f3f
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/debug/jniLibs"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/incremental/mergeDebugShaders/merger.xml b/node_modules/clevertap-react-native/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+new file mode 100644
+index 0000000..61bafb8
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/shaders"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/debug/shaders"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/incremental/packageDebugAssets/merger.xml b/node_modules/clevertap-react-native/android/build/intermediates/incremental/packageDebugAssets/merger.xml
+new file mode 100644
+index 0000000..feb98e2
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/incremental/packageDebugAssets/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/assets"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/debug/assets"/></dataSet><dataSet config="generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/build/intermediates/shader_assets/debug/compileDebugShaders/out"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt b/node_modules/clevertap-react-native/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+new file mode 100644
+index 0000000..78ac5b8
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+@@ -0,0 +1,2 @@
++R_DEF: Internal format may change without notice
++local
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt b/node_modules/clevertap-react-native/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+new file mode 100644
+index 0000000..657d75d
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+@@ -0,0 +1,14 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="com.clevertap.react" >
++4
++5    <uses-sdk android:minSdkVersion="19" />
++6    <!--
++7    Package name has been added to support compatibility for RN versions less than 0.71.
++8    This gives warning for RN versions greater than or equal to 0.71 which can be ignored
++9    -->
++10    <application>
++10-->/Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml:6:5-7:19
++11    </application>
++12
++13</manifest>
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml b/node_modules/clevertap-react-native/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+new file mode 100644
+index 0000000..0900b20
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.clevertap.react" >
++
++    <uses-sdk android:minSdkVersion="19" />
++    <!--
++    Package name has been added to support compatibility for RN versions less than 0.71.
++    This gives warning for RN versions greater than or equal to 0.71 which can be ignored
++    -->
++    <application>
++    </application>
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json b/node_modules/clevertap-react-native/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt b/node_modules/clevertap-react-native/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+new file mode 100644
+index 0000000..08f4ebe
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+@@ -0,0 +1 @@
++0 Warning/Error
+\ No newline at end of file
+diff --git a/node_modules/clevertap-react-native/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt b/node_modules/clevertap-react-native/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+new file mode 100644
+index 0000000..7e96959
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+@@ -0,0 +1 @@
++com.clevertap.react
+diff --git a/node_modules/clevertap-react-native/android/build/outputs/logs/manifest-merger-debug-report.txt b/node_modules/clevertap-react-native/android/build/outputs/logs/manifest-merger-debug-report.txt
+new file mode 100644
+index 0000000..088aa8d
+--- /dev/null
++++ b/node_modules/clevertap-react-native/android/build/outputs/logs/manifest-merger-debug-report.txt
+@@ -0,0 +1,17 @@
++-- Merging decision tree log ---
++manifest
++ADDED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml:1:1-8:12
++INJECTED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml:1:1-8:12
++	package
++		ADDED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml:1:11-40
++		INJECTED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml
++application
++ADDED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml:6:5-7:19
++uses-sdk
++INJECTED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
++INJECTED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml
++INJECTED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml
++	android:targetSdkVersion
++		INJECTED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml
++	android:minSdkVersion
++		INJECTED from /Users/karthik.iyer/Documents/Karthik_Temp_Laptop_Data_30Sept/IntegrationProjects/Git_RN_14Nov/custom-templates-react-native-integration/clevertap-custom-templates-react-native/node_modules/clevertap-react-native/android/src/main/AndroidManifest.xml

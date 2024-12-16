@@ -1,0 +1,15 @@
+diff --git a/node_modules/react-native-screens/android/build.gradle b/node_modules/react-native-screens/android/build.gradle
+index a414201..949f533 100644
+--- a/node_modules/react-native-screens/android/build.gradle
++++ b/node_modules/react-native-screens/android/build.gradle
+@@ -135,6 +135,10 @@ android {
+         sourceCompatibility JavaVersion.VERSION_1_8
+         targetCompatibility JavaVersion.VERSION_1_8
+     }
++
++    kotlinOptions {
++        jvmTarget = "1.8" // Use a valid target like 1.8 or 11
++    }
+     packagingOptions {
+         // For some reason gradle only complains about the duplicated version of libreact_render libraries
+         // while there are more libraries copied in intermediates folder of the lib build directory, we exclude

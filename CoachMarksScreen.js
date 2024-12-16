@@ -20,7 +20,7 @@ const CoachMarksScreen = () => {
   useEffect(() => {
     CleverTap.setDebugLevel(3);
 
-    CleverTap.recordEvent('Karthiks Native Display Event');
+    CleverTap.recordEvent('coachmarks_nd');
 
     setTimeout(() => {
       CleverTap.getAllDisplayUnits((err, res) => {
@@ -107,7 +107,6 @@ const CoachMarksScreen = () => {
         <View style={styles.profileIconContainer}>
           <Image
             accessibilityLabel="profile_image"
-            testID="profile_image"
             accessible={true}
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
@@ -128,7 +127,6 @@ const CoachMarksScreen = () => {
       {/* Search Bar */}
       <TextInput
         accessibilityLabel="search"
-        testID="search"
         accessible={true}
         style={styles.searchInput}
         placeholder="Search your favorite food"
@@ -185,7 +183,6 @@ const CoachMarksScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             accessibilityLabel="cart"
-            testID="cart"
             accessible={true}
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/833/833314.png',
@@ -197,7 +194,6 @@ const CoachMarksScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             accessibilityLabel="support_help"
-            testID="support_help"
             accessible={true}
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/1828/1828919.png',
@@ -209,7 +205,6 @@ const CoachMarksScreen = () => {
         <TouchableOpacity style={styles.navItem}>
           <Image
             accessibilityLabel="settings"
-            testID="settings"
             accessible={true}
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/3524/3524659.png',

@@ -9,7 +9,7 @@ const TooltipsScreen = () => {
   CleverTap.setDebugLevel(3);
 
   useEffect(() => {
-    CleverTap.recordEvent('ToolsTips Event');
+    CleverTap.recordEvent('tooltips_nd');
 
     setTimeout(() => {
       CleverTap.getAllDisplayUnits((err, res) => {
@@ -36,28 +36,24 @@ const TooltipsScreen = () => {
     <View style={styles.container}>
       <Text
         accessibilityLabel="TextView1"
-        testID="TextView1"
         accessible={true}
         style={[styles.title, styles.title1]}>
         This is Title 1
       </Text>
       <Text
         accessibilityLabel="TextView2"
-        testID="TextView2"
         accessible={true}
         style={[styles.title, styles.title2]}>
         This is Title 2
       </Text>
       <Text
         accessibilityLabel="TextView3"
-        testID="TextView3"
         accessible={true}
         style={[styles.title, styles.title3]}>
         This is Title 3
       </Text>
       <Text
         accessibilityLabel="TextView4"
-        testID="TextView4"
         accessible={true}
         style={[styles.title, styles.title4]}>
         This is Title 4

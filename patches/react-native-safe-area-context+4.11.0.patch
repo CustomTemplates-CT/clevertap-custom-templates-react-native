@@ -1,0 +1,15 @@
+diff --git a/node_modules/react-native-safe-area-context/android/build.gradle b/node_modules/react-native-safe-area-context/android/build.gradle
+index f324b9a..7c86523 100644
+--- a/node_modules/react-native-safe-area-context/android/build.gradle
++++ b/node_modules/react-native-safe-area-context/android/build.gradle
+@@ -70,6 +70,10 @@ android {
+         }
+     }
+ 
++    kotlinOptions {
++        jvmTarget = "1.8" // Use a valid target like 1.8 or 11
++    }
++
+     lintOptions{
+         abortOnError false
+     }

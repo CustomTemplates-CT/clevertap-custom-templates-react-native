@@ -1,6 +1,7 @@
 package com.reactnativeintegration;
 
 import com.clevertap.android.sdk.ActivityLifecycleCallback;
+import com.clevertap.react.BuildConfig;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import java.util.Iterator;
 import java.util.*;
