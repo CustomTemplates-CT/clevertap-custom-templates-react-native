@@ -83,7 +83,7 @@ project.ext.react = [
 
     entryFile: "index.js",
     bundleInRelease: true, // Ensures the JS bundle is created for release
-    enableHermes: false    // Or true, based on your Hermes configuration
+    enableHermes: true    // Or true, based on your Hermes configuration
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -213,6 +213,12 @@ android {
             }
 
         }
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'parseReleaseLocalResources') {
+        task.dependsOn ':app:copyReleaseBundledJs'
     }
 }
 
