@@ -33,6 +33,8 @@
   [CleverTap setDebugLevel:CleverTapLogDebug];
   [[CleverTapReactManager sharedInstance] applicationDidLaunchWithOptions:launchOptions];
   
+  [[CleverTap sharedInstance] setUrlDelegate:self];
+  
   //
   //  // Config an additional instance
   //  CleverTapInstanceConfig *ctConfig = [[CleverTapInstanceConfig alloc] initWithAccountId:@"TEST-W8W-6WR-846Z" accountToken:@"TEST-W8W-6WR-846Z"];
@@ -50,6 +52,12 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+// CleverTapURLDelegate method
+- (BOOL)shouldHandleCleverTapURL:(NSURL *)url forChannel:(CleverTapChannel)channel {
+    NSLog(@"Handling URL: \(%@) for channel: \(%d)", url, channel);
+    return NO;
 }
 
 -(void) registerForPush {
