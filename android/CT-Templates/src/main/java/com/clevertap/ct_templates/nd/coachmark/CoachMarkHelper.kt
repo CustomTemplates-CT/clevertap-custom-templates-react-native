@@ -47,12 +47,6 @@ class CoachMarkHelper {
                             throw JSONException("'$viewIdKey' is missing or empty")
                         }
 
-//                        val viewId = context.resources.getIdentifier(
-//                            viewIdString,
-//                            "id",
-//                            context.packageName
-//                        )
-
                         val viewId = resolveViewId(context, viewIdString)
                         Log.d("CoachMarkHelper", "Resolved view ID for key " + viewIdKey + ": " + viewId);
                         if (viewId == 0) {
@@ -82,18 +76,23 @@ class CoachMarkHelper {
         }
     }
 
-    fun findViewWithTestId(root: View?, testId: String): View? {
-        if (root == null) {
-            return null
+    fun findViewWithNativeId(root: View?, nativeId: String): View? {
+        if (root == null) return null
+
+        // RN sets nativeID as a tag with this key
+        val tag = root.getTag(com.clevertap.ct_templates.R.id.view_tag_native_id) as? String
+        if (tag != null) {
+            Log.d("CoachMarkHelper", "View tag found = $tag")
         }
-        // Check the view's content description (used for accessibilityLabel/testID)
-        if (testId == root.contentDescription) {
+
+        if (tag == nativeId) {
+            Log.d("CoachMarkHelper", "Matched view with nativeID = $nativeId")
             return root
         }
+
         if (root is ViewGroup) {
-            val group = root
-            for (i in 0 until group.childCount) {
-                val childResult = findViewWithTestId(group.getChildAt(i), testId)
+            for (i in 0 until root.childCount) {
+                val childResult = findViewWithNativeId(root.getChildAt(i), nativeId)
                 if (childResult != null) {
                     return childResult
                 }
@@ -102,11 +101,17 @@ class CoachMarkHelper {
         return null
     }
 
-    fun resolveViewId(activity: Activity, testId: String?): Int {
-        val rootView = activity.findViewById<View>(R.id.content).rootView
-        val targetView = findViewWithTestId(rootView, testId!!)
+    fun resolveViewId(activity: Activity, nativeId: String?): Int {
+        val rootView = activity.findViewById<View>(android.R.id.content).rootView
+        val targetView = findViewWithNativeId(rootView, nativeId!!)
+        if (targetView == null) {
+            Log.e("CoachMarkHelper", "No view found for nativeID = $nativeId")
+        } else {
+            Log.d("CoachMarkHelper", "Resolved nativeID = $nativeId to viewId = ${targetView.id}")
+        }
         return targetView?.id ?: 0
     }
+
 
     fun addCoachMarkItem(
         viewId: Int,

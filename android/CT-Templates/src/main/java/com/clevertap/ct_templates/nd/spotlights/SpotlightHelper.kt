@@ -92,17 +92,18 @@ class SpotlightHelper {
         }
     }
 
-    fun findViewWithTestId(root: View?, testId: String): View? {
-        if (root == null) {
-            return null
+    fun findViewWithNativeId(root: View?, nativeId: String): View? {
+        if (root == null) return null
+        val tag = root.getTag(R.id.view_tag_native_id) as? String
+        if (tag != null) {
+            Log.d("SpotlightHelper", "Found view with nativeID tag = $tag")
         }
-        // Check the view's content description (used for accessibilityLabel/testID)
-        if (testId == root.contentDescription) {
+        if (tag == nativeId) {
             return root
         }
         if (root is ViewGroup) {
             for (i in 0 until root.childCount) {
-                val childResult = findViewWithTestId(root.getChildAt(i), testId)
+                val childResult = findViewWithNativeId(root.getChildAt(i), nativeId)
                 if (childResult != null) {
                     return childResult
                 }
@@ -110,7 +111,6 @@ class SpotlightHelper {
         }
         return null
     }
-
 
     private fun createTarget(
         activity: AppCompatActivity,
@@ -120,11 +120,10 @@ class SpotlightHelper {
         textColor: String
     ): Target {
         return try {
-            val anchorView = findViewWithTestId(
+            val anchorView = findViewWithNativeId(
                 activity.findViewById(android.R.id.content),
                 anchorId
-            ) ?: throw IllegalArgumentException("Anchor view with testId $anchorId not found")
-
+            ) ?: throw IllegalArgumentException("Anchor view with nativeID $anchorId not found")
 
             val rootView = FrameLayout(activity)
             val overlay = activity.layoutInflater.inflate(R.layout.layout_target, rootView)

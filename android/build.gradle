@@ -8,14 +8,14 @@ buildscript {
         compileSdkVersion = 34
         targetSdkVersion = 30
         ndkVersion = "21.4.7075529"
-        kotlin_version = '1.9.0'
+        kotlin_version = '2.1.0'
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath('com.android.tools.build:gradle:8.7.3')
+        classpath('com.android.tools.build:gradle:8.2.2')
         // classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.4.0'
@@ -47,7 +47,7 @@ allprojects {
 
     configurations.all {
         resolutionStrategy {
-            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10'  // Ensure the Kotlin version is compatible
+            force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0'  // Ensure the Kotlin version is compatible
         }
     }
 }

@@ -35,20 +35,17 @@ const SpotlightsScreen = () => {
   return (
     <View style={styles.container}>
       <Text
-        accessibilityLabel="TextView1"
-        accessible={true}
+        nativeID="TextView1"
         style={styles.textView1}>
         TextView1
       </Text>
       <Text
-        accessibilityLabel="TextView2"
-        accessible={true}
+        nativeID="TextView2"
         style={styles.textView2}>
         TextView2
       </Text>
       <Text
-        accessibilityLabel="TextView3"
-        accessible={true}
+        nativeID="TextView3"
         style={styles.textView3}>
         TextView3
       </Text>
