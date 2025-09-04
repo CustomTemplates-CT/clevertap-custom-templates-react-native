@@ -119,6 +119,6 @@ target 'ReactNativeIntegration' do
 
   target 'NotificationContentDemo' do
     pod 'CTNotificationContent'
-    pod "CleverTap-iOS-SDK"
+    pod "CleverTap-iOS-SDK", "7.1.1"
   end
 end

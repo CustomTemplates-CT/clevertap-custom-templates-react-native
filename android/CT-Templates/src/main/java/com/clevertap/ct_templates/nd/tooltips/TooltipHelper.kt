@@ -88,31 +88,45 @@ class TooltipHelper {
         }
     }
 
-    fun findViewWithTestId(root: View?, testId: String): View? {
-        if (root == null) {
-            return null
-        }
-        // Check the view's content description (used for accessibilityLabel/testID)
-        if (testId == root.contentDescription) {
+    fun findViewWithNativeId(root: View?, nativeId: String): View? {
+        if (root == null) return null
+        // Check the view's tag for nativeID
+        val viewTag = root.getTag(
+            root.context.resources.getIdentifier(
+                "view_tag_native_id",
+                "id",
+                root.context.packageName
+            )
+        )
+
+        if (nativeId == viewTag) {
             return root
         }
+
         if (root is ViewGroup) {
-            val group = root
-            for (i in 0 until group.childCount) {
-                val childResult = findViewWithTestId(group.getChildAt(i), testId)
+            for (i in 0 until root.childCount) {
+                val childResult = findViewWithNativeId(root.getChildAt(i), nativeId)
                 if (childResult != null) {
                     return childResult
                 }
             }
         }
+
         return null
     }
 
-    fun resolveViewId(activity: Activity, testId: String?): Int {
+
+    fun resolveViewId(activity: Activity, nativeId: String?): Int {
         val rootView = activity.findViewById<View>(android.R.id.content).rootView
-        val targetView = findViewWithTestId(rootView, testId!!)
+        val targetView = findViewWithNativeId(rootView, nativeId!!)
+        if (targetView != null) {
+            Log.d("TooltipHelper", "Matched nativeID: $nativeId → ViewID: ${targetView.id}")
+        } else {
+            Log.e("TooltipHelper", "No view found for nativeID: $nativeId")
+        }
         return targetView?.id ?: 0
     }
+
 
     private fun getGravity(index: Int, customKv: JSONObject): Tooltip.Gravity {
         return when (customKv.optString("nd_view${index + 1}_tooltip_gravity", "TOP").uppercase()) {

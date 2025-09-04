@@ -106,8 +106,7 @@ const CoachMarksScreen = () => {
         </View>
         <View style={styles.profileIconContainer}>
           <Image
-            accessibilityLabel="profile_image"
-            accessible={true}
+            nativeID="profile_image"
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png',
             }}
@@ -126,8 +125,7 @@ const CoachMarksScreen = () => {
 
       {/* Search Bar */}
       <TextInput
-        accessibilityLabel="search"
-        accessible={true}
+        nativeID="search"
         style={styles.searchInput}
         placeholder="Search your favorite food"
         placeholderTextColor="#999"
@@ -182,8 +180,7 @@ const CoachMarksScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Image
-            accessibilityLabel="cart"
-            accessible={true}
+            nativeID="cart"
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/833/833314.png',
             }}
@@ -193,8 +190,7 @@ const CoachMarksScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Image
-            accessibilityLabel="support_help"
-            accessible={true}
+            nativeID="support_help"
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/1828/1828919.png',
             }}
@@ -204,8 +200,7 @@ const CoachMarksScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Image
-            accessibilityLabel="settings"
-            accessible={true}
+            nativeID="settings"
             source={{
               uri: 'https://cdn-icons-png.flaticon.com/512/3524/3524659.png',
             }}

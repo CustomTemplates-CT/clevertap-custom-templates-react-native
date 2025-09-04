@@ -35,26 +35,22 @@ const TooltipsScreen = () => {
   return (
     <View style={styles.container}>
       <Text
-        accessibilityLabel="TextView1"
-        accessible={true}
+        nativeID="TextView1"
         style={[styles.title, styles.title1]}>
         This is Title 1
       </Text>
       <Text
-        accessibilityLabel="TextView2"
-        accessible={true}
+        nativeID="TextView2"
         style={[styles.title, styles.title2]}>
         This is Title 2
       </Text>
       <Text
-        accessibilityLabel="TextView3"
-        accessible={true}
+        nativeID="TextView3"
         style={[styles.title, styles.title3]}>
         This is Title 3
       </Text>
       <Text
-        accessibilityLabel="TextView4"
-        accessible={true}
+        nativeID="TextView4"
         style={[styles.title, styles.title4]}>
         This is Title 4
       </Text>
