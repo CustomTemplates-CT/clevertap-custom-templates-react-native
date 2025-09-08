@@ -291,3 +291,9 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+afterEvaluate {
+    tasks.matching { it.name == "processReleaseMainManifest" }.configureEach {
+        dependsOn("copyReleaseBundledJs")
+    }
+}
