@@ -280,7 +280,8 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.10"
 
-    implementation project(':CT-Templates')
+//    implementation project(':CT-Templates')
+    implementation fileTree(dir: "libs", include: ["*.aar"])
 }
 
 // Run this once to be able to run the application with BUCK
