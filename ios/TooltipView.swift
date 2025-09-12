@@ -97,9 +97,7 @@ final class TooltipView: UIView {
             tri.close()
             path.append(tri)
             
-            // <-- swapped drawing for top/bottom so arrow orientation matches placement -->
         case .top:
-            // Tooltip sits above target -> arrow should point down (arrow at bottom of tooltip)
             let bubbleRect = CGRect(x: 0, y: 0, width: w, height: h - arrowHeight)
             path.append(UIBezierPath(roundedRect: bubbleRect, cornerRadius: radius))
             let tri = UIBezierPath()
@@ -110,7 +108,6 @@ final class TooltipView: UIView {
             path.append(tri)
             
         case .bottom:
-            // Tooltip sits below target -> arrow should point up (arrow at top of tooltip)
             let bubbleRect = CGRect(x: 0, y: arrowHeight, width: w, height: h - arrowHeight)
             path.append(UIBezierPath(roundedRect: bubbleRect, cornerRadius: radius))
             let tri = UIBezierPath()
@@ -125,11 +122,21 @@ final class TooltipView: UIView {
         path.fill()
     }
     
-    static func show(message: String, for target: UIView, in container: UIView, gravity requestedGravity: TooltipGravity, bubbleColor: UIColor = .systemRed, bubbleTextColor: UIColor = .white, completion: (() -> Void)? = nil) {
+    // MARK: - Public show API (keeps previous behavior + tap-to-advance)
+    /// completion is invoked when the tooltip is dismissed (either user tap or auto)
+    static func show(message: String,
+                     for target: UIView,
+                     in container: UIView,
+                     gravity requestedGravity: TooltipGravity,
+                     bubbleColor: UIColor = .systemRed,
+                     bubbleTextColor: UIColor = .white,
+                     completion: (() -> Void)? = nil) {
+        
+        // ensure layout up to date
         container.layoutIfNeeded()
         target.superview?.layoutIfNeeded()
         
-        // Temporary tip for sizing
+        // compute size
         let temp = UILabel()
         temp.numberOfLines = 0
         temp.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -149,7 +156,7 @@ final class TooltipView: UIView {
         
         let targetFrame = target.superview?.convert(target.frame, to: container) ?? target.frame
         
-        // --- Auto Flip Logic ---
+        // auto flip logic
         let availableAbove = targetFrame.minY - container.safeAreaInsets.top
         let availableBelow = container.bounds.height - targetFrame.maxY - container.safeAreaInsets.bottom
         let availableLeft = targetFrame.minX - container.safeAreaInsets.left
@@ -166,9 +173,8 @@ final class TooltipView: UIView {
         }
         
         let tip = TooltipView(message: message, gravity: gravity, bubbleColor: bubbleColor, bubbleTextColor: bubbleTextColor)
-        tip.alpha = 0
-        container.addSubview(tip)
         
+        // compute position
         var x: CGFloat = 0
         var y: CGFloat = 0
         
@@ -189,17 +195,86 @@ final class TooltipView: UIView {
         
         tip.frame = CGRect(x: x, y: y, width: width, height: height)
         
-        UIView.animate(withDuration: 0.22, delay: 0, options: [.curveEaseOut], animations: {
+        // create overlay that owns the tooltip and manages interactions
+        let overlay = TooltipOverlay(tooltip: tip, completion: completion)
+        overlay.frame = container.bounds
+        overlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        overlay.addTooltip(tip)
+        
+        container.addSubview(overlay)
+        
+        // animate in
+        tip.alpha = 0
+        UIView.animate(withDuration: 0.22) {
             tip.alpha = 1
-        }, completion: { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                UIView.animate(withDuration: 0.5, animations: {
-                    tip.alpha = 0
-                }, completion: { _ in
-                    tip.removeFromSuperview()
-                    completion?()
-                })
+        }
+        
+        // start auto-dismiss timer (3s)
+        overlay.startAutoDismiss(after: 3.0)
+    }
+}
+
+
+/// Overlay that contains the tooltip and manages tap & auto-dismiss.
+/// - Tapping anywhere on the overlay immediately dismisses the tooltip (and calls completion).
+/// - If user does not tap, the overlay dismisses automatically after the timer fires (and calls completion).
+final class TooltipOverlay: UIView {
+    private var tooltip: TooltipView?
+    private var timer: Timer?
+    private var completion: (() -> Void)?
+    private var dismissed = false
+    
+    init(tooltip: TooltipView, completion: (() -> Void)?) {
+        self.tooltip = tooltip
+        self.completion = completion
+        super.init(frame: .zero)
+        backgroundColor = .clear
+        isUserInteractionEnabled = true
+        
+        // capture taps anywhere
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        addGestureRecognizer(tap)
+    }
+    
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    
+    func addTooltip(_ tip: TooltipView) {
+        // ensure tooltip is added and positioned relative to overlay
+        self.tooltip = tip
+        addSubview(tip)
+    }
+    
+    func startAutoDismiss(after seconds: TimeInterval) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: seconds, repeats: false) { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.dismissTooltip()
             }
+        }
+    }
+    
+    @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
+        dismissTooltip()
+    }
+    
+    func dismissTooltip() {
+        guard !dismissed else { return }
+        dismissed = true
+        timer?.invalidate()
+        timer = nil
+        
+        guard let tip = tooltip else {
+            // Just remove and call completion if no tip
+            completion?()
+            removeFromSuperview()
+            return
+        }
+        
+        UIView.animate(withDuration: 0.28, animations: {
+            tip.alpha = 0
+        }, completion: { [weak self] _ in
+            self?.completion?()
+            self?.removeFromSuperview()
         })
     }
 }
