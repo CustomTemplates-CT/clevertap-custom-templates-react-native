@@ -13,6 +13,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3A2A834D6731A22E21877487 /* libPods-ReactNativeIntegration-ReactNativeIntegrationTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A9BB848804E5D6ECB1D93C /* libPods-ReactNativeIntegration-ReactNativeIntegrationTests.a */; };
 		4E0D791C2AE16E6A002F7CA3 /* CTNotificationService in Frameworks */ = {isa = PBXBuildFile; productRef = 4E0D791B2AE16E6A002F7CA3 /* CTNotificationService */; };
+		4E27F9C12E709F1400023580 /* CoachmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27F9C02E709F0F00023580 /* CoachmarkManager.swift */; };
+		4E27F9C32E709F2D00023580 /* CoachmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27F9C22E709F2600023580 /* CoachmarkView.swift */; };
 		4E54906B2A867F6E00E59229 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E54906A2A867F6E00E59229 /* NotificationService.swift */; };
 		4E54906F2A867F6E00E59229 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4E5490682A867F6E00E59229 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4E58BEDC2CB658640041189E /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 4E58BEDB2CB658640041189E /* main.jsbundle */; };
@@ -25,6 +27,9 @@
 		4E5CDC5F2A658C69008C51DC /* NotificationContentDemo.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4E5CDC502A658C68008C51DC /* NotificationContentDemo.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4E5CDC752A65BAA7008C51DC /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5CDC732A65BA9D008C51DC /* OpenSSL.xcframework */; };
 		4E5CDC7B2A65BAE3008C51DC /* double-conversion.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5CDC782A65BAD5008C51DC /* double-conversion.xcframework */; };
+		4E5EA3362E6F48D700FDEA5B /* SpotlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EA3352E6F48D700FDEA5B /* SpotlightManager.swift */; };
+		4E5EA3382E6F491E00FDEA5B /* SpotlightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EA3372E6F491E00FDEA5B /* SpotlightView.swift */; };
+		4E5EA33A2E6F495600FDEA5B /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5EA3392E6F495600FDEA5B /* UIColor+Hex.swift */; };
 		4E756B6D2A86185B004FA7E2 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5CDC732A65BA9D008C51DC /* OpenSSL.xcframework */; };
 		4E756B702A8618A1004FA7E2 /* double-conversion.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5CDC782A65BAD5008C51DC /* double-conversion.xcframework */; };
 		4E756B722A862AB0004FA7E2 /* OpenSSL.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5CDC732A65BA9D008C51DC /* OpenSSL.xcframework */; };
@@ -32,6 +37,10 @@
 		4E756B752A862AB2004FA7E2 /* double-conversion.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5CDC782A65BAD5008C51DC /* double-conversion.xcframework */; };
 		4E756B762A862AB2004FA7E2 /* double-conversion.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4E5CDC782A65BAD5008C51DC /* double-conversion.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4EB836382ADFEC6A008964E3 /* CleverTapSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB836372ADFEC6A008964E3 /* CleverTapSDK */; };
+		4EEA8E0D2E70413D00AEB98E /* SpotlightBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA8E0C2E70413D00AEB98E /* SpotlightBridge.swift */; };
+		4EEA8E0F2E704AB400AEB98E /* SpotlightBridgeProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA8E0E2E704AB400AEB98E /* SpotlightBridgeProxy.m */; };
+		4EEA8E112E70704300AEB98E /* TooltipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA8E102E70703D00AEB98E /* TooltipManager.swift */; };
+		4EEA8E132E7070C000AEB98E /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA8E122E7070BC00AEB98E /* TooltipView.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C138D1F3A968DE7D805A2F8E /* libPods-ReactNativeIntegration-NotificationContentDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F0DFBAF31E9817BFD85AE06 /* libPods-ReactNativeIntegration-NotificationContentDemo.a */; };
 		FEF155F4BEE416A2F7E7C798 /* libPods-ReactNativeIntegration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12959B4F1D7C5153BFCF308B /* libPods-ReactNativeIntegration.a */; };
@@ -107,6 +116,8 @@
 		4E0D79142AE16CE9002F7CA3 /* libCTNotificationService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCTNotificationService.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0D79162AE16D11002F7CA3 /* libCTNotificationService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCTNotificationService.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0D79182AE16D97002F7CA3 /* libCTNotificationService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCTNotificationService.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E27F9C02E709F0F00023580 /* CoachmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachmarkManager.swift; sourceTree = "<group>"; };
+		4E27F9C22E709F2600023580 /* CoachmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachmarkView.swift; sourceTree = "<group>"; };
 		4E370F6E28BE182300DCB78F /* ReactNativeIntegration.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ReactNativeIntegration.entitlements; path = ReactNativeIntegration/ReactNativeIntegration.entitlements; sourceTree = "<group>"; };
 		4E5490682A867F6E00E59229 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E54906A2A867F6E00E59229 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -123,8 +134,16 @@
 		4E5CDC732A65BA9D008C51DC /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		4E5CDC782A65BAD5008C51DC /* double-conversion.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "double-conversion.xcframework"; path = "Pods/Flipper-DoubleConversion/Frameworks/double-conversion.xcframework"; sourceTree = "<group>"; };
 		4E5CDC7D2A65BB31008C51DC /* NotificationContentDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationContentDemo.entitlements; sourceTree = "<group>"; };
+		4E5EA3352E6F48D700FDEA5B /* SpotlightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpotlightManager.swift; path = ReactNativeIntegration/SpotlightManager.swift; sourceTree = "<group>"; };
+		4E5EA3372E6F491E00FDEA5B /* SpotlightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpotlightView.swift; path = ReactNativeIntegration/SpotlightView.swift; sourceTree = "<group>"; };
+		4E5EA3392E6F495600FDEA5B /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+Hex.swift"; path = "ReactNativeIntegration/UIColor+Hex.swift"; sourceTree = "<group>"; };
 		4EB836392ADFEC8A008964E3 /* libCTNotificationService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCTNotificationService.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB8363B2ADFEC95008964E3 /* libCTNotificationService.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libCTNotificationService.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EEA8E0B2E7040F300AEB98E /* ReactNativeIntegration-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ReactNativeIntegration-Bridging-Header.h"; path = "ReactNativeIntegration/ReactNativeIntegration-Bridging-Header.h"; sourceTree = "<group>"; };
+		4EEA8E0C2E70413D00AEB98E /* SpotlightBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpotlightBridge.swift; path = ReactNativeIntegration/SpotlightBridge.swift; sourceTree = "<group>"; };
+		4EEA8E0E2E704AB400AEB98E /* SpotlightBridgeProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SpotlightBridgeProxy.m; path = ReactNativeIntegration/SpotlightBridgeProxy.m; sourceTree = "<group>"; };
+		4EEA8E102E70703D00AEB98E /* TooltipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipManager.swift; sourceTree = "<group>"; };
+		4EEA8E122E7070BC00AEB98E /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		60C7CA9065BFACF527708DD7 /* Pods-ReactNativeIntegration-NotificationContentDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeIntegration-NotificationContentDemo.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeIntegration-NotificationContentDemo/Pods-ReactNativeIntegration-NotificationContentDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6E2C769A25A0A3F42D9CEE6F /* Pods-ReactNativeIntegration-ReactNativeIntegrationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeIntegration-ReactNativeIntegrationTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeIntegration-ReactNativeIntegrationTests/Pods-ReactNativeIntegration-ReactNativeIntegrationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		78033A08FF126D5B594A7588 /* Pods-ReactNativeIntegration-NotificationContentDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeIntegration-NotificationContentDemo.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeIntegration-NotificationContentDemo/Pods-ReactNativeIntegration-NotificationContentDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +224,16 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				4E5EA3352E6F48D700FDEA5B /* SpotlightManager.swift */,
+				4E5EA3372E6F491E00FDEA5B /* SpotlightView.swift */,
+				4E5EA3392E6F495600FDEA5B /* UIColor+Hex.swift */,
+				4EEA8E0B2E7040F300AEB98E /* ReactNativeIntegration-Bridging-Header.h */,
+				4EEA8E0C2E70413D00AEB98E /* SpotlightBridge.swift */,
+				4EEA8E0E2E704AB400AEB98E /* SpotlightBridgeProxy.m */,
+				4E27F9C22E709F2600023580 /* CoachmarkView.swift */,
+				4E27F9C02E709F0F00023580 /* CoachmarkManager.swift */,
+				4EEA8E122E7070BC00AEB98E /* TooltipView.swift */,
+				4EEA8E102E70703D00AEB98E /* TooltipManager.swift */,
 			);
 			name = ReactNativeIntegration;
 			sourceTree = "<group>";
@@ -405,7 +434,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1600;
 					};
 					4E5490672A867F6E00E59229 = {
 						CreatedOnToolsVersion = 14.3;
@@ -677,8 +706,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E5EA3362E6F48D700FDEA5B /* SpotlightManager.swift in Sources */,
+				4E27F9C32E709F2D00023580 /* CoachmarkView.swift in Sources */,
+				4E27F9C12E709F1400023580 /* CoachmarkManager.swift in Sources */,
+				4EEA8E0D2E70413D00AEB98E /* SpotlightBridge.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				4E5EA3382E6F491E00FDEA5B /* SpotlightView.swift in Sources */,
+				4EEA8E112E70704300AEB98E /* TooltipManager.swift in Sources */,
+				4EEA8E0F2E704AB400AEB98E /* SpotlightBridgeProxy.m in Sources */,
+				4E5EA33A2E6F495600FDEA5B /* UIColor+Hex.swift in Sources */,
+				4EEA8E132E7070C000AEB98E /* TooltipView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -787,7 +825,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 054B7183E5A6AA17CAEB1528 /* Pods-ReactNativeIntegration.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ReactNativeIntegration/ReactNativeIntegration.entitlements;
@@ -806,6 +843,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deven.Clevertap-ios";
 				PRODUCT_NAME = ReactNativeIntegration;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -816,7 +854,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 066024FF43FC0909EBE91C0C /* Pods-ReactNativeIntegration.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ReactNativeIntegration/ReactNativeIntegration.entitlements;
@@ -834,6 +871,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deven.Clevertap-ios";
 				PRODUCT_NAME = ReactNativeIntegration;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
