@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import React
+import CTCustomTemplates
 
 @objc(SpotlightBridge)
 class SpotlightBridge: NSObject {

@@ -1,6 +1,15 @@
 {
-  "originHash" : "02182e2bcc410fc45db6c445390256a39f8c3341d2dfe05b3d07de68e9bc926e",
+  "originHash" : "3994cfdb10db6575443b81d2d9e8ef53c21e0ac0f5fb13eadb5a8a85efca0c97",
   "pins" : [
+    {
+      "identity" : "clevertap-custom-templates-react-native",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CustomTemplates-CT/clevertap-custom-templates-react-native.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f5bfc2fdd0d74e6f0a6948bc4b283d42f336279a"
+      }
+    },
     {
       "identity" : "clevertap-ios-sdk",
       "kind" : "remoteSourceControl",
