@@ -357,7 +357,7 @@ import CoachMarkHelper from './CustomTemplatesHelper';
 
 const CleverTap = require('clevertap-react-native');
 
-const {SpotlightBridge} = NativeModules;
+const {CTCustomTemplatesBridge} = NativeModules;
 
 const CoachMarksScreen = () => {
   const profileImageRef = useRef(null);
@@ -425,7 +425,7 @@ const CoachMarksScreen = () => {
         } else if (Platform.OS === 'ios') {
           console.log('🔹 [JS] iOS coachmarks flow');
           CleverTap.pushDisplayUnitViewedEventForID(displayUnit.wzrk_id);
-          SpotlightBridge.showCoachmarks(JSON.stringify(displayUnit), targets)
+          CTCustomTemplatesBridge.showCoachmarks(JSON.stringify(displayUnit), targets)
             .then(res => {
               console.log('✅ [JS] coachmarks flow completed:', res);
               CleverTap.pushDisplayUnitClickedEventForID(displayUnit.wzrk_id);

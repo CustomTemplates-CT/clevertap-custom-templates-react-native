@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 import SpotlightHelper from './CustomTemplatesHelper';
 const CleverTap = require('clevertap-react-native');
-const {SpotlightBridge} = NativeModules;
+const {CTCustomTemplatesBridge} = NativeModules;
 
-console.log('🔍 [JS] SpotlightBridge in NativeModules:', SpotlightBridge);
+console.log('🔍 [JS] CTCustomTemplatesBridge in NativeModules:', CTCustomTemplatesBridge);
 
 const SpotlightsScreen = () => {
   const TextView1Ref = useRef(null);
@@ -77,19 +77,19 @@ const SpotlightsScreen = () => {
           console.log('🔹 [JS] iOS spotlight flow');
           CleverTap.pushDisplayUnitViewedEventForID(displayUnit.wzrk_id);
           console.log(
-            '🚀 [JS] Calling SpotlightBridge.showSpotlights with json & targets:',
+            '🚀 [JS] Calling CTCustomTemplatesBridge.showSpotlights with json & targets:',
             targets,
           );
 
-          if (!SpotlightBridge || !SpotlightBridge.showSpotlights) {
+          if (!CTCustomTemplatesBridge || !CTCustomTemplatesBridge.showSpotlights) {
             console.error(
-              '❌ [JS] SpotlightBridge.showSpotlights is not available on NativeModules',
+              '❌ [JS] CTCustomTemplatesBridge.showSpotlights is not available on NativeModules',
             );
             return;
           }
 
           // Call promise-based native method.
-          SpotlightBridge.showSpotlights(JSON.stringify(displayUnit), targets)
+          CTCustomTemplatesBridge.showSpotlights(JSON.stringify(displayUnit), targets)
             .then(res => {
               console.log('✅ [JS] Spotlight flow completed:', res);
               CleverTap.pushDisplayUnitClickedEventForID(displayUnit.wzrk_id);

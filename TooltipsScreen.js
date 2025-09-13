@@ -101,7 +101,7 @@ import {
 
 import TooltipsHelper from './CustomTemplatesHelper';
 const CleverTap = require('clevertap-react-native');
-const {SpotlightBridge} = NativeModules;
+const {CTCustomTemplatesBridge} = NativeModules;
 
 const TooltipsScreen = () => {
   const TextView1Ref = useRef(null);
@@ -167,7 +167,7 @@ const TooltipsScreen = () => {
           });
         } else if (Platform.OS === 'ios') {
           console.log('🔹 [JS] iOS tooltip flow');
-          SpotlightBridge.showTooltips(JSON.stringify(displayUnit), targets)
+          CTCustomTemplatesBridge.showTooltips(JSON.stringify(displayUnit), targets)
             .then(res => {
               console.log('✅ [JS] Spotlight flow completed:', res);
               CleverTap.pushDisplayUnitClickedEventForID(displayUnit.wzrk_id);

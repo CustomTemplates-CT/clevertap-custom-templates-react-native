@@ -3,8 +3,8 @@ import UIKit
 import React
 import CTCustomTemplates
 
-@objc(SpotlightBridge)
-class SpotlightBridge: NSObject {
+@objc(CTCustomTemplatesBridge)
+class CTCustomTemplatesBridge: NSObject {
 
   // ============================
   // React Native registration
@@ -26,8 +26,8 @@ class SpotlightBridge: NSObject {
     rejecter: @escaping RCTPromiseRejectBlock
   ) {
 
-    print("🔵 [SpotlightBridge] showSpotlights called. Raw json length:", json.length)
-    print("🔵 [SpotlightBridge] Received targets (NSDictionary):", targets)
+    print("🔵 [CTCustomTemplatesBridge] showSpotlights called. Raw json length:", json.length)
+    print("🔵 [CTCustomTemplatesBridge] Received targets (NSDictionary):", targets)
 
     guard let bridge = RCTBridge.current(),
           let uiManager = bridge.uiManager else {
